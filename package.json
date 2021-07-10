@@ -1,0 +1,62 @@
+{
+  "name": "indexeddb-electron-app",
+  "productName": "IndexedDB Electron Crud App",
+  "version": "1.1.0",
+  "description": "IndexedDB Demo With Dexie.JS (A Minimalistic Wrapper for IndexedDB) And Electron.JS Made With Love By Gandhar Thakar.",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gandharthakar/indexeddb-electron-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gandharthakar/indexeddb-electron-app/issues"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "indexeddb-electron-crud-app",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "app-icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "app-icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "snap"
+      ],
+      "icon": "app-icon.icns",
+      "maintainer": "@Gandharthakar",
+      "category": "Education"
+    },
+    "nsis": {
+      "installerIcon": "app-icon.ico",
+      "uninstallerIcon": "app-icon.ico",
+      "uninstallDisplayName": "IndexedDB Electron Crud App",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createStartMenuShortcut": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "homepage": "https://github.com/gandharthakar/indexeddb-electron-app#readme",
+  "author": "@Gandharthakar",
+  "email" : "gandharthakar.3@gmail.com",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^13.1.6",
+    "electron-builder": "^22.11.7"
+  }
+}

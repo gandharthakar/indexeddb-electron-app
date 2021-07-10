@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Index DB Demo With Electron JS</title>
+        <meta name="description" content="IndexedDB Demo App With Dexie.JS (A Minimalistic Wrapper for IndexedDB) And Electron JS Made With Love By Gandhar Thakar.">
+        <!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="images/favicons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+		<link rel="manifest" href="images/favicons/manifest.json">
+		<link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#000000">
+		<meta name="msapplication-TileColor" content="#000000">
+		<meta name="msapplication-TileImage" content="images/favicons/mstile-144x144.png">
+		<!-- Address bar color Change in chrome -->
+		<meta name="theme-color" content="#000000">
+		<meta name="msapplication-navbutton-color" content="#000000">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+        <!-- Stylesheets -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/toastr.min.css">
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        
+        <div class="wrapper">
+            <h1 class="idbdm-title">IndexedDB Demo.</h1>
+            <p>This is IndexedDB "CRUD" demo made with Dexie.js (A Minimalistic Wrapper for IndexedDB). Here you can perform Full CRUD (Create, Read, Update, Delete) with indexedDB. You can able to create database, tables and rows with columns same as SQL.</p>
+            <p>I am using <b>"Electron.Js"</b> and <b>"Electron.Js Builder"</b> to use this project as to create electron app and make this app installable and runable across all platform such as Windows, MacOS And Linux.</p>
+            <h5>Third Party libraries, Packages and frameworks. </h5>
+            <ul class="third-party-list">
+                <li>
+                    <span class="highlight">jQuery</span> <sup>(v.3.6.0)</sup> - Is The JavaScript (Wrapper) Framwork To Simplify Code.
+                </li>
+                <li>
+                    <span class="highlight">Bootstrap</span> <sup>(v.5.0.1)</sup> - Is The CSS Front-end Framework To STyle HTML Elements.
+                </li>
+                <li>
+                    <span class="highlight">Dexie.Js</span> <sup>(v.3.0.3)</sup> - Is The Minimalistic Wrapper for IndexedDB.
+                </li>
+                <li>
+                    <span class="highlight">Toastr</span> <sup>(v.2.1.4)</sup> - Is For Toast Notification.
+                </li>
+                <li>
+                    <span class="highlight">Electron</span> <sup>(v.13.1.6)</sup> - Is For Convert This Project To Desktop App (Which is runnable and installable in Windows, MacOS And Linux.).
+                </li>
+                <li>
+                    <span class="highlight">Electron-Bulder</span> <sup>(v.22.11.7)</sup> - Is For Make This App Installable In All Platform.
+                </li>
+            </ul>
+            <form class="needs-validation crud-form" novalidate>
+                <div class="row">
+                    <div class="col-md-12 fitem">
+                        <input type="text" class="form-control" id="obj_id" placeholder="Obj ID" autocomplete="off" readonly />
+                    </div>
+                    <div class="col-md-12 fitem">
+                        <input type="text" class="form-control crud-form-input" id="stud_name" placeholder="Student Name" autocomplete="off" />
+                        <div class="error-msg"></div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-12 fitem">
+                        <input type="text" class="form-control crud-form-input" id="stud_id" placeholder="Student ID / Roll No." autocomplete="off" />
+                        <div class="error-msg"></div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-12 fitem">
+                        <div class="">
+                            <button type="submit" class="btn btn-success submit-btn" title="Create">
+                                Create
+                            </button>
+                            <button type="button" class="btn btn-primary read-btn" title="Read">
+                                Read
+                            </button>
+                            <button type="button" class="btn btn-warning update-btn" title="Update" disabled>
+                                Update
+                            </button>
+                            <button type="button" class="btn btn-danger delete-all-btn" title="Delete All">
+                                Delete All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="table-cont">
+                <div class="table-responsive">
+                    <table class="table table-hover student-records-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Student Name</th>
+                                <th>Student ID</th>
+                                <th>Edit</th>
+                                <th>Delete.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dbTableData"></tbody>
+                    </table>
+                </div>
+                <!-- No Record Found -->
+                <div class="no-record no-db-records">No Records Found.</div>
+            </div>
+        </div>
+
+        <!-- Delete Single Recoed Confirmation Modal -->
+        <div class="modal" id="delSingleStudRec" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Record Delete Confirmation.</h5>
+                        <button type="button" class="close mdl-clsbtn" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this record ?
+                        <input type="hidden" name="obj_id" id="hidmdl-objid" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" title="No" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" title="Yes" class="btn btn-primary delete-studsrec-data">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete All Recoeds Confirmation Modal -->
+        <div class="modal" id="delAllStudRec" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Database Delete Confirmation.</h5>
+                        <button type="button" class="close mdl-clsbtn" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete all records and delete database also ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" title="No" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" title="Yes" class="btn btn-primary delete-allstudsrec-data">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/toastr.min.js"></script>
+        <script src="js/dexie.js"></script>
+        <script type="module" src="js/site.js"></script>
+    </body>
+</html>

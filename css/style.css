@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ececec;
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .50);
+}
+
+.idbdm-title {
+    padding: 0px 0px 20px 0px;
+    margin: 0px;
+    font-size: 30px;
+}
+
+.fitem {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.error-msg {
+    font-size: 12px;
+    color: red;
+}
+
+.table-cont {
+    padding-top: 20px;
+}
+
+.student-records-table tbody tr td {
+    vertical-align: middle;
+}
+
+.table-actions-btns {
+    display: inline-block;
+    text-decoration: none !important;
+    background-color: transparent;
+    color: #000;
+    font-size: 20px;
+    line-height: 16px;
+    border: 2px solid #000;
+    transition: all 0.2s ease-in-out;
+}
+
+.table-actions-btns:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.table-actions-btns.edit {
+    color: green;
+    border-color: green;
+}
+
+.table-actions-btns.edit:hover {
+    background-color: green;
+    color: #fff;
+    border-color: green;
+}
+
+.table-actions-btns.delete {
+    color: red;
+    border-color: red;
+}
+
+.table-actions-btns:hover {
+    background-color: red;
+    color: #fff;
+    border-color: red;
+}
+
+.no-record {
+    padding-top: 15px;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(0, 0, 0, .50);
+}
+
+.third-party-list li .highlight {
+    font-weight: 700;
+}
+
+.third-party-list li sup {
+    font-weight: 500;
+    color: red;
+}
+
+.mdl-clsbtn {
+    font-size: 30px;
+    padding: 0px 4px;
+    margin: 0px;
+    line-height: 25px;
+    border: 1px solid #000000;
+    background: transparent;
+}
