@@ -1,4 +1,4 @@
-# indexeddb-crud-demo
+# indexeddb CRUD (Create, Read, Update And Delete) With Electron JS App.
 This is IndexedDB "CRUD" demo made with Dexie.js (A Minimalistic Wrapper for IndexedDB). Here you can perform Full CRUD (Create, Read, Update, Delete) with indexedDB. You can able to create database, tables and rows with columns same as SQL.
 
 I am using "Electron.Js" and "Electron.Js Builder" to use this project as to create electron app and make this app installable and runable across all platform such as Windows, MacOS And Linux.
