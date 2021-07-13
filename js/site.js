@@ -206,6 +206,17 @@ $(document).ready(() => {
     // Input onChange Check Validity.
     validateForm__ON_CHANGE();
 
+    // Hide All Error Messages.
+    function hideAllErrorMessages() {
+        // Get All Error Message.
+        let allFormElems = document.querySelectorAll('.crud-form-input');
+        let ermsg1 = $(allFormElems[0]).parent().find('.error-msg');
+        let ermsg2 = $(allFormElems[1]).parent().find('.error-msg');
+        // Remove Error message.
+        $(ermsg1).text('');
+        $(ermsg2).text('');
+    }
+
     // Create Button Click.
     $('.crud-form').on('submit', function(e){
         e.preventDefault();
@@ -252,6 +263,8 @@ $(document).ready(() => {
         editSingleTableRecord(id);
         // Enable 'Update' Button.
         $('.update-btn').removeAttr('disabled');
+        // Hide All Error Messages.
+        hideAllErrorMessages();
     });
 
     // Update Data On Click.
@@ -271,6 +284,8 @@ $(document).ready(() => {
             incrementIDCount();
             // Remove Valid Class from form.
             $('.crud-form').removeClass('isValidForm');
+            // Hide All Error Messages.
+            hideAllErrorMessages();
         });
         // Enable 'Create' Button.
         $('.submit-btn').removeAttr('disabled');
@@ -291,6 +306,8 @@ $(document).ready(() => {
         $(mdlh_input).val(id);
         // Finally Show Delete Confirmation Modal.
         mdl.modal('show');
+        // Hide All Error Messages.
+        hideAllErrorMessages();
     });
 
     // Delete Single Row On Modal Button 'Yes' Click.
@@ -317,6 +334,8 @@ $(document).ready(() => {
         let mdl = $("#delAllStudRec");
         // Show Modal.
         mdl.modal('show');
+        // Hide All Error Messages.
+        hideAllErrorMessages();
     });
 
     // Delete All Row On Modal Button 'Yes' Click.
@@ -330,7 +349,7 @@ $(document).ready(() => {
         if(reloadPage === false) {
             // Create IndexedDB Database.
             db = createIndexedDB('student_records', {
-            students: `++id, student_name, student_id`
+                students: `++id, student_name, student_id`
             });
             db.open();
             // Empty 'tbody'.
